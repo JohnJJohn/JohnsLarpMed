@@ -388,6 +388,33 @@
   name: heart
   abstract: true
   components:
+  # <LarpMed>
+  - type: Heart
+    heartRateEffectsLower:
+      0:
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        time: 3
+        type: Update
+      - !type:HealthChange
+        damage:
+          types:
+            Asphyxiation: 3
+      30:
+      - !type:MovementSpeedModifier
+        walkSpeedModifier: 0.65
+        sprintSpeedModifier: 0.65
+    heartRateEffectsHigher:
+      120:
+      - !type:Jitter
+      - !type:MovementSpeedModifier
+        walkSpeedModifier: 2
+        sprintSpeedModifier: 2
+      - !type:SatiateHunger
+        factor: -3
+      - !type:SatiateThirst
+        factor: -3
+  # </LarpMed>
   - type: GibbableOrgan
   - type: Organ
     category: Heart
